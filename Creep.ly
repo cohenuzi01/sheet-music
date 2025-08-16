@@ -1,4 +1,3 @@
-
 \header {
   title = "Creep"
   composer = "Radiohead"
@@ -50,7 +49,7 @@ violinMusic = {
   g'2\3-3 g'2\3-3 | c''2\4-2 c''2\4-2 |
   g'2\3-3 g'2\3-3 | fis'2\3-2 fis'2\3-2 |
   g'1\3-3 | c'1\3-3 | g'1\3-3 | b1\3-2 |
-  c'1\3-3 | cm'1\3-4 | % c minor note
+  c'1\3-3 | es'1\3-1 | % Corrected Note: E-flat for C minor
   g1\3-0 | R1 |
 
   % Outro
@@ -73,3 +72,52 @@ pianoRMusic = {
   a2 g2 | R1 | r2 g'4 a'4 | b'2 ~ b'4 r8 g'8 |
   e'2 d'2 | c'2 b2 | a2 g2 | R1 |
   r2 e'4 fis'4 | g'2 ~ g'4 r8 e'8 | c'2 b2 | a2 g2 |
+  R1 | r2 g'4 a'4 | b'2 ~ b'4 r8 g'8 | e'2 d'2 |
+  c'2 b2 | a2 g2 | R1*2 |
+  g'4 a'4 b'4 g'4 | e'2 d'2 | c'2 b2 | a2 g2 |
+  R1*9 |
+  g'4 a'4 b'4 g'4 | e'2 d'2 | c'2 b2 | a2 g2 |
+  R1*9 |
+  g'4 a'4 b'4 g'4 | e'2 d'2 | c'2 b2 | a2 g2 |
+  R1*12 |
+}
+
+pianoLMusic = {
+  \key g \major
+  \time 4/4
+
+  <g b d'>4 <g b d'>4 <g b d'>4 <g b d'>4 | <c' e' g'>4 <c' e' g'>4 <c' e' g'>4 <c' e' g'>4 | <g b d'>4 <g b d'>4 <g b d'>4 <g b d'>4 | <b d' fis'>4 <b d' fis'>4 <b d' fis'>4 <b d' fis'>4 |
+  <c e g>4 <c e g>4 <c e g>4 <c e g>4 | <c e g>4 <c e g>4 <c e g>4 <c e g>4 | <g b d'>4 <g b d'>4 <g b d'>4 <g b d'>4 | <c' e' g'>4 <c' e' g'>4 <c' e' g'>4 <c' e' g'>4 |
+  <g b d'>4 <g b d'>4 <g b d'>4 <g b d'>4 | <b d' fis'>4 <b d' fis'>4 <b d' fis'>4 <b d' fis'>4 | <c e g>4 <c e g>4 <c e g>4 <c e g>4 | <c e g>4 <c e g>4 <c e g>4 <c e g>4 |
+  g4 g,4 b,4 d4 | c4 c,4 e,4 g,4 | g,4 g,4 b,4 d4 | b,4 b,,4 d,4 fis,4 |
+  c,4 c,,4 e,,4 g,,4 | c,4 c,,4 e,,4 g,,4 | g,,4 g,,4 b,,4 d,4 | c,4 c,,4 e,,4 g,,4 |
+  g,,4 g,,4 b,,4 d,4 | b,,4 b,,,4 d,,4 fis,,4 | c,,4 c,,,4 e,,,4 g,,,4 | c,,4 c,,,4 e,,,4 g,,,4 |
+  R1*12 |
+  <g, b, d>4 <g, b, d>4 <g, b, d>4 <g, b, d>4 | <c e g>4 <c e g>4 <c e g>4 <c e g>4 | <g, b, d>4 <g, b, d>4 <g, b, d>4 <g, b, d>4 | <b, d fis>4 <b, d fis>4 <b, d fis>4 <b, d fis>4 |
+  <c, e, g,>4 <c, e, g,>4 <c, e, g,>4 <c, e, g,>4 | <c, e, g,>4 <c, e, g,>4 <c, e, g,>4 <c, e, g,>4 | <g,, b,, d,>4 <g,, b,, d,>4 <g,, b,, d,>4 <g,, b,, d,>4 | <c, e, g,>4 <c, e, g,>4 <c, e, g,>4 <c, e, g,>4 |
+  <g,, b,, d,>4 <g,, b,, d,>4 <g,, b,, d,>4 <g,, b,, d,>4 | <b,, d, fis,>4 <b,, d, fis,>4 <b,, d, fis,>4 <b,, d, fis,>4 | <c,, e,, g,,>4 <c,, e,, g,,>4 <c,, e,, g,,>4 <c,, e,, g,,>4 | <c,, e,, g,,>4 <c,, e,, g,,>4 <c,, e,, g,,>4 <c,, e,, g,,>4 |
+  R1*12 |
+}
+
+% --- SCORE ASSEMBLY ---
+
+\score {
+  <<
+    \new Staff \with { instrumentName = "Violin" } {
+      \clef treble
+      \violinMusic
+    }
+    \new PianoStaff \with { instrumentName = "Piano" } <<
+      \new Staff {
+        \clef treble
+        \pianoRMusic
+      }
+      \new Staff {
+        \clef bass
+        \pianoLMusic
+      }
+    >>
+  >>
+  \layout { }
+  \midi { }
+}
