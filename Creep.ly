@@ -1,4 +1,3 @@
-\version "2.24.3"
 
 \header {
   title = "Creep"
